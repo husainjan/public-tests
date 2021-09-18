@@ -9,7 +9,7 @@ const productsInitialState = [
   {
     id: 2,
     name: "ماست پرچرب کاله 500 گرمی",
-    price: 20000,
+    price: 120000,
     groupId: 1,
   },
 ];
