@@ -1,0 +1,38 @@
+:root {
+  /*  //? First Pallete   */
+  --color01: #d79922;
+  --color02: #efe1ba;
+  --color03: #f13c1f;
+  --color04: #4056a1;
+  --color05: #c5cbe3;
+  /*  //! Second Pallete   */
+  --color06: #edc8b8;
+  --color07: #ede2dc;
+  --color08: #bbb2b5;
+  --color09: #123d6a;
+  --color10: #ab3b61;
+  --color11: #1d67d2;
+  --color12: #0f8f14;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  text-decoration: none;
+  direction: rtl;
+  font-family: B Nazanin, Tahoma;
+}
+
+body {
+  background-color: var(--color07);
+}
+
+.rowFlexCenter {
+  display: flex;
+  justify-content: space-between;
+}
+.columnFlexCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
