@@ -2,7 +2,7 @@ import { createContext, useContext, useReducer } from "react";
 const productsInitialState = [
   {
     id: 1,
-    name: "فشارسنج دکتر بل",
+    name: "فشارسنج بی ول B.Well",
     price: 5000000,
     groupId: 2,
   },
