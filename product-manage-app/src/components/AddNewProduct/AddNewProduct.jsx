@@ -59,70 +59,73 @@ const AddNewProduct = ({ children }) => {
   };
 
   return (
-    <section className="productsContainer">
+    <section className="newproductsContainer">
       <div>
         <h4>پنجره اضافه کردن کالا</h4>
         <form className="productForm" onSubmit={submitHandler}>
-          <section className="formlabel">
-            <label style={{ marginLeft: "5px", marginBottom: "5px" }}>
-              گروه کالا:
-            </label>
-            {btnGroupSelected && <label className="groupLabel"></label>}
-            <label style={{ marginLeft: "5px", marginBottom: "5px" }}>
-              نام کالا:
-            </label>
-            <label style={{ marginLeft: "5px", marginBottom: "5px" }}>
-              قیمت (ریال):
-            </label>
-          </section>
           <section className="formInputs">
-            <select
-              className="formInput"
-              name="groupId"
-              onChange={changeHandler}
-              value={inputValues.groupId}
-            >
-              {productsGroup.map((pg) => {
-                return (
-                  <option key={pg.id} value={pg.id}>
-                    {pg.name}
-                  </option>
-                );
-              })}
-            </select>
-            {btnGroupSelected && <section>{children}</section>}
-            <input
-              ref={inputRef}
-              type="text"
-              name="name"
-              className="formInput"
-              value={inputValues.name}
-              onChange={changeHandler}
-              placeholder="نام کالا نمی تواند خالی باشد"
-            />
-            <input
-              type="text"
-              name="price"
-              className="formInput"
-              value={inputValues.price}
-              onChange={changeHandler}
-              onFocus={(e) => (e.target.value = "")}
-              placeholder="قیمت نمی تواند خالی باشد"
-            />
+            <div>
+              <label style={{ marginLeft: "5px", marginBottom: "5px" }}>
+                گروه کالا:
+              </label>
+              <select
+                className="formInput"
+                name="groupId"
+                onChange={changeHandler}
+                value={inputValues.groupId}
+              >
+                {productsGroup.map((pg) => {
+                  return (
+                    <option key={pg.id} value={pg.id}>
+                      {pg.name}
+                    </option>
+                  );
+                })}
+              </select>
+              <button
+                className={btnGroupSelected ? "btn selected" : "btn"}
+                onClick={clickGroupHandler}
+              >
+                {btnGroupSelected ? "بستن" : "گروه جدید"}
+              </button>
+              {btnGroupSelected && <section>{children}</section>}
+              {/* {btnGroupSelected && <label className="groupLabel"></label>} */}
+            </div>
+            <div>
+              <label style={{ marginLeft: "5px", marginBottom: "5px" }}>
+                نام کالا:
+              </label>
+              <input
+                ref={inputRef}
+                type="text"
+                name="name"
+                className="formInput"
+                value={inputValues.name}
+                onChange={changeHandler}
+                placeholder="نام کالا نمی تواند خالی باشد"
+              />
+            </div>
+            <div>
+              <label style={{ marginLeft: "5px", marginBottom: "5px" }}>
+                قیمت (ریال):
+              </label>
+
+              <input
+                type="text"
+                name="price"
+                className="formInput2"
+                value={inputValues.price}
+                onChange={changeHandler}
+                onFocus={(e) => (e.target.value = "")}
+                placeholder="قیمت نمی تواند خالی باشد"
+              />
+            </div>
 
             <div className="rowFlexCenter">
               <button className="formButton" type="submit">
                 اضافه کردن کالا
               </button>
             </div>
-          </section>
-          <section>
-            <button
-              className={btnGroupSelected ? "btn selected" : "btn"}
-              onClick={clickGroupHandler}
-            >
-              {btnGroupSelected ? "بستن" : "گروه جدید"}
-            </button>
           </section>
         </form>
       </div>

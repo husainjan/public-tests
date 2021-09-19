@@ -1,18 +1,23 @@
-.productsContainer {
-    background-color: var(--color02);
-    color: var(--color04);
-    font-size: 18px;
-    width: 50rem;
-    border-radius: 10px;
-    border: 1px solid var(--color10);
-  }
-.productsContainer h4 {
-    margin: 20px;
+.newproductsContainer {
+  background-color: var(--color02);
+  color: var(--color04);
+  font-size: 18px;
+  width: 35rem;
+  border-radius: 10px;
+  border: 1px solid var(--color10);
+  display: flex;
+}
+.newproductsContainer h4 {
+  margin: 20px;
 }
 
 .formlabel,
 .formInputs {
   padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.productForm {
   display: flex;
   flex-direction: column;
 }
@@ -26,6 +31,16 @@
   width: 20rem;
   padding: 2px 5px;
 }
+.formInput2 {
+  margin-left: 5px;
+  margin-bottom: 5px;
+  outline: none;
+  border: 1px solid var(--color10);
+  border-radius: 5px;
+  width: 18rem;
+  padding: 2px 5px;
+}
+
 .formButton {
   padding: 2px 10px;
   font-weight: bold;
@@ -39,11 +54,11 @@
 }
 
 .selected {
-    font-weight: bold;
-    color: var(--color05);
-    background-color: var(--color09);
-    border: 1px solid var(--color05);
-  }
+  font-weight: bold;
+  color: var(--color05);
+  background-color: var(--color09);
+  border: 1px solid var(--color05);
+}
 
 .main2 {
   width: 80%;
