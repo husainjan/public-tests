@@ -27,22 +27,6 @@ const ProductList = () => {
 
   return (
     <>
-      {/* <section>
-        <section>
-          <button
-            name="productGroup"
-            onClick={clickHandler}
-            className={
-              btnSelected.btn2
-                ? "btn headerButtonGroup selected"
-                : "btn headerButtonGroup"
-            }
-          >
-            {btnSelected.btn2 ? "بستن گروه کالا" : "اضافه کردن گروه کالا"}
-          </button>
-        </section>
-        {btnSelected.btn2 && <AddNewGroup />}
-      </section> */}
 
       <h3 style={{ marginTop: "30px", marginBottom: "10px" }}>لیست محصولات</h3>
 
@@ -65,7 +49,7 @@ const ProductList = () => {
 
       <section className="productsContainer">
         <div
-          className="productContainer productHeaderContainer bolded"}
+          className="productContainer productHeaderContainer bolded"
         >
           <p className="productsHeaderPadding">ردیف</p>
           <p className="productsHeaderPadding">نام کالا</p>

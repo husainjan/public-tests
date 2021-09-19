@@ -20,24 +20,26 @@ const AddNewGroup = () => {
     if (inputValue !== "") {
       productGroupDispatch({ type: "add", value: inputValue });
       inputRef.current.focus();
+      setInputValue("");
     }
-    setInputValue("");
+    else {
+      inputRef.current.placeholder ="نام گروه نمی تواند خالی باشد"
+    }
   };
 
   return (
     <section>
       <div className="GroupsContainer">
-        <h5>اضافه کردن گروه کالا</h5>
-        <form style={{ padding: "5px 15px" }} onSubmit={addHandler}>
-          <label style={{ marginLeft: "5px" }}>نام گروه کالا:</label>
+        <form style={{ padding: "5px 15px" }}>
+          
           <input
             ref={inputRef}
             type="text"
-            className="formInput"
+            className="groupformInput"
             value={inputValue}
             onChange={changeHandler}
           />
-          <button className="formGroupButton" type="submit">
+          <button className="formGroupButton" onClick={addHandler}>
             افزودن گروه
           </button>
         </form>

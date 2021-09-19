@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import "./AddNewProduct.css";
+import "./AddNewProduct.css"
 import { useProductsActions } from "../Providers/ProductsProvider";
 import { useProductGroup } from "../Providers/ProductGroupsProvider";
 
@@ -22,6 +22,7 @@ const AddNewProduct = ({ children }) => {
   };
   useEffect(() => {
     setBtnGroupSelected(false);
+    inputRef.current.focus();
   }, [productsGroup]);
 
   // const numberFormat = (value) =>
@@ -42,7 +43,7 @@ const AddNewProduct = ({ children }) => {
     }
   };
 
-  const addHandler = (e) => {
+  const submitHandler = (e) => {
     e.preventDefault();
     if (inputValues.name !== "" && inputValues.price !== "") {
       productsDispatch({
@@ -54,18 +55,23 @@ const AddNewProduct = ({ children }) => {
         },
       });
       inputRef.current.focus();
+      setInputValues(initialState);
     }
-    setInputValues(initialState);
+    else {
+      inputRef.current.placeholder ="نام کالا نمی تواند خالی باشد"
+    }
   };
   return (
-    <section className="">
-      <div className="productsContainer">
+    <section className="productsContainer">
+      <div>
         <h4>پنجره اضافه کردن کالا</h4>
-        <form className="productForm" onSubmit={addHandler}>
+        <form className="productForm" onSubmit={submitHandler}>
           <section className="formlabel">
             <label style={{ marginLeft: "5px", marginBottom: "5px" }}>
               گروه کالا:
             </label>
+            {btnGroupSelected && <label className="groupLabel">
+            </label>}
             <label style={{ marginLeft: "5px", marginBottom: "5px" }}>
               نام کالا:
             </label>
@@ -88,6 +94,7 @@ const AddNewProduct = ({ children }) => {
                 );
               })}
             </select>
+            {btnGroupSelected && <section>{children}</section>}
             <input
               ref={inputRef}
               type="text"
@@ -103,8 +110,13 @@ const AddNewProduct = ({ children }) => {
               value={inputValues.price}
               onChange={changeHandler}
             />
-
             
+
+            <div className="rowFlexCenter">
+              <button className="formButton" type="submit">
+                اضافه کردن کالا
+              </button>
+            </div>
             
           </section>
           <section>
@@ -115,13 +127,9 @@ const AddNewProduct = ({ children }) => {
               {btnGroupSelected ? "بستن" : "گروه جدید"}
             </button>
           </section>
+          
         </form>
-        {btnGroupSelected && <section>{children}</section>}
-            <div className="rowFlexCenter">
-              <button className="formButton" type="submit">
-                اضافه کردن کالا
-              </button>
-            </div>
+            
       </div>
     </section>
   );
