@@ -5,7 +5,7 @@ import { useProductGroup } from "../Providers/ProductGroupsProvider";
 
 const initialState = {
   name: "",
-  price: "",
+  price: 0,
   groupId: 1,
 };
 
@@ -32,15 +32,14 @@ const AddNewProduct = ({ children }) => {
 
   const changeHandler = (event) => {
     if (event.target.name === "price") {
-      let newVal = parseInt(event.target.value.replace(/\D/g, ""), 10);
-      let newVal2 = newVal.toLocaleString();
-      setInputValues({ ...inputValues, price: newVal2 });
-    } else {
-      setInputValues({
-        ...inputValues,
-        [event.target.name]: event.target.value,
-      });
+      if (isNaN(event.target.value)) {
+        event.target.value = "";
+      }
     }
+    setInputValues({
+      ...inputValues,
+      [event.target.name]: event.target.value,
+    });
   };
 
   const submitHandler = (se) => {
@@ -50,7 +49,7 @@ const AddNewProduct = ({ children }) => {
         type: "add",
         value: {
           name: inputValues.name,
-          price: parseInt(inputValues.price.replace(/\D/g, "")),
+          price: inputValues.price,
           groupId: parseInt(inputValues.groupId),
         },
       });
@@ -58,6 +57,7 @@ const AddNewProduct = ({ children }) => {
       setInputValues(initialState);
     }
   };
+
   return (
     <section className="productsContainer">
       <div>
@@ -106,6 +106,7 @@ const AddNewProduct = ({ children }) => {
               className="formInput"
               value={inputValues.price}
               onChange={changeHandler}
+              onFocus={(e) => (e.target.value = "")}
               placeholder="قیمت نمی تواند خالی باشد"
             />
 
