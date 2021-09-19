@@ -1,6 +1,6 @@
 import { useContext, useReducer, createContext } from "react";
 
-const productGroupInitialState = [
+let productGroupInitialState = [
   {
     id: 1,
     name: "لبنیات",
@@ -21,6 +21,7 @@ const reducer = (state, action) => {
       const newGroup = { id: lastId + 1, name: action.value };
       let newState = [...state];
       newState.push(newGroup);
+      localStorage.setItem("groups", JSON.stringify(newState));
       return newState;
     default:
       return productGroupInitialState;
@@ -28,6 +29,9 @@ const reducer = (state, action) => {
 };
 
 const ProductGroupsProvider = ({ children }) => {
+  if (localStorage.getItem("groups")) {
+    productGroupInitialState = [...JSON.parse(localStorage.getItem("groups"))];
+  }
   const [productGroupState, productGroupDispatch] = useReducer(
     reducer,
     productGroupInitialState

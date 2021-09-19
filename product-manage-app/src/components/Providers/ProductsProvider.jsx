@@ -23,10 +23,6 @@ const ProductsProvider = ({ children }) => {
     productsInitialState = [...JSON.parse(localStorage.getItem("products"))];
   }
 
-  const saveLocal = (state) => {
-    localStorage.setItem("products", JSON.stringify(state));
-  };
-
   const reducer = (state, action) => {
     switch (action.type) {
       case "add": {
@@ -38,19 +34,19 @@ const ProductsProvider = ({ children }) => {
         const newProduct = { ...action.value, id: lastId + 1 };
         let newState = [...state];
         newState.push(newProduct);
-        saveLocal(newState);
+        localStorage.setItem("products", JSON.stringify(newState));
         return newState;
       }
       case "edit": {
         let Items = [...state];
         const index = Items.findIndex((p) => p.id === action.value.id);
         Items[index] = { ...action.value };
-        saveLocal(Items);
+        localStorage.setItem("products", JSON.stringify(Items));
         return Items;
       }
       case "delete": {
         const newState = state.filter((p) => p.id !== action.value.id);
-        saveLocal(newState);
+        localStorage.setItem("products", JSON.stringify(newState));
         return newState;
       }
       default:
