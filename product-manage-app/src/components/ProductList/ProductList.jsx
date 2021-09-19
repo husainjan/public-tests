@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useProductGroup } from "../Providers/ProductGroupsProvider";
 import { useProducts } from "../Providers/ProductsProvider";
 
-import styles from "./ProductList.module.css";
+import "./ProductList.css";
 import { FaRegEdit, FaTrashAlt } from "react-icons/fa";
 import AddNewGroup from "../AddNewGroup/AddNewGroup";
 import AddNewProduct from "../AddNewProduct/AddNewProduct";
@@ -51,7 +51,7 @@ const ProductList = () => {
           <button
             name="product"
             onClick={clickHandler}
-            className={btnSelected ? "btn  selected" : "btn "}
+            className={btnSelected ? "btn selected" : "btn"}
           >
             {btnSelected ? "بستن" : "افزودن کالای جدید"}
           </button>
@@ -63,34 +63,34 @@ const ProductList = () => {
         )}
       </section>
 
-      <section className={styles.productsContainer}>
+      <section className="productsContainer">
         <div
-          className={`${styles.productContainer} ${styles.productHeaderContainer} ${styles.bolded}`}
+          className="productContainer productHeaderContainer bolded"}
         >
-          <p className={styles.productsHeaderPadding}>ردیف</p>
-          <p className={styles.productsHeaderPadding}>نام کالا</p>
-          <p className={styles.productsHeaderPadding}>گروه کالا</p>
-          <p className={styles.productsHeaderPadding}>قیمت(ریال)</p>
-          <p className={styles.productsHeaderPadding}>تغییرات</p>
+          <p className="productsHeaderPadding">ردیف</p>
+          <p className="productsHeaderPadding">نام کالا</p>
+          <p className="productsHeaderPadding">گروه کالا</p>
+          <p className="productsHeaderPadding">قیمت(ریال)</p>
+          <p className="productsHeaderPadding">تغییرات</p>
         </div>
         {products.map((product, index) => {
           return (
-            <div key={product.id} className={`${styles.productContainer}`}>
-              <p className={`${styles.productsPadding} ${styles.centered}`}>
+            <div key={product.id} className="productContainer">
+              <p className="productsPadding centered">
                 {index + 1}
               </p>
-              <p className={styles.productsPadding}>{product.name}</p>
-              <p className={styles.productsPadding}>
+              <p className="productsPadding">{product.name}</p>
+              <p className="productsPadding">
                 {Object.values(
                   productsGroup.find((pg) => pg.id === product.groupId)
                 ).pop()}
               </p>
-              <p className={`${styles.productsPadding} ${styles.rtol}`}>
+              <p className="productsPadding rtol">
                 {numberFormat(product.price)}
               </p>
-              <div className={`${styles.icons} ${styles.productsPadding}`}>
-                <FaRegEdit className={styles.edit} />
-                <FaTrashAlt className={styles.delete} />
+              <div className="productsPadding icons">
+                <FaRegEdit className="edit" />
+                <FaTrashAlt className="delete" />
               </div>
             </div>
           );

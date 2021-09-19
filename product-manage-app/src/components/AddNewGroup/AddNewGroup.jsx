@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import "../../Layout/Layout.css";
+import "./AddNewGroup.css";
 import { useProductGroupActions } from "../Providers/ProductGroupsProvider";
 
 const AddNewGroup = () => {
@@ -37,7 +37,7 @@ const AddNewGroup = () => {
             value={inputValue}
             onChange={changeHandler}
           />
-          <button className="formButton" type="submit">
+          <button className="formGroupButton" type="submit">
             افزودن گروه
           </button>
         </form>

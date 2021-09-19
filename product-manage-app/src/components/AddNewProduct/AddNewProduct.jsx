@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import "../../Layout/Layout.css";
+import "./AddNewProduct.css";
 import { useProductsActions } from "../Providers/ProductsProvider";
 import { useProductGroup } from "../Providers/ProductGroupsProvider";
 
@@ -104,11 +104,8 @@ const AddNewProduct = ({ children }) => {
               onChange={changeHandler}
             />
 
-            <div className="rowFlexCenter">
-              <button className="formButton" type="submit">
-                اضافه کردن کالا
-              </button>
-            </div>
+            
+            
           </section>
           <section>
             <button
@@ -120,6 +117,11 @@ const AddNewProduct = ({ children }) => {
           </section>
         </form>
         {btnGroupSelected && <section>{children}</section>}
+            <div className="rowFlexCenter">
+              <button className="formButton" type="submit">
+                اضافه کردن کالا
+              </button>
+            </div>
       </div>
     </section>
   );
