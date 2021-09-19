@@ -5,10 +5,10 @@ import { useProductGroupActions } from "../Providers/ProductGroupsProvider";
 const AddNewGroup = () => {
   const productGroupDispatch = useProductGroupActions();
   const [inputValue, setInputValue] = useState("");
-  const inputRef = useRef();
+  const inputRefGroup = useRef();
 
   useEffect(() => {
-    inputRef.current.focus();
+    inputRefGroup.current.focus();
   }, []);
 
   const changeHandler = (event) => {
@@ -19,11 +19,11 @@ const AddNewGroup = () => {
     e.preventDefault();
     if (inputValue !== "") {
       productGroupDispatch({ type: "add", value: inputValue });
-      inputRef.current.focus();
+      inputRefGroup.current.focus();
       setInputValue("");
     }
     else {
-      inputRef.current.placeholder ="نام گروه نمی تواند خالی باشد"
+      inputRefGroup.current.placeholder ="نام گروه نمی تواند خالی باشد"
     }
   };
 
@@ -33,7 +33,7 @@ const AddNewGroup = () => {
         <form style={{ padding: "5px 15px" }}>
           
           <input
-            ref={inputRef}
+            ref={inputRefGroup}
             type="text"
             className="groupformInput"
             value={inputValue}

@@ -25,6 +25,15 @@ const reducer = (state, action) => {
       let newState = [...state];
       newState.push(newProduct);
       return newState;
+    case "edit":
+      let Items = [...state];
+      const index = Items.findIndex((p) => p.id === action.value.id);
+      Items[index] = { ...action.value };
+      console.log(Items);
+
+      return Items;
+    case "delete":
+      return state.filter((p) => p.id !== action.value.id);
     default:
       return productsInitialState;
   }

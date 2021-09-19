@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import "./AddNewProduct.css"
+import "./AddNewProduct.css";
 import { useProductsActions } from "../Providers/ProductsProvider";
 import { useProductGroup } from "../Providers/ProductGroupsProvider";
 
@@ -43,8 +43,8 @@ const AddNewProduct = ({ children }) => {
     }
   };
 
-  const submitHandler = (e) => {
-    e.preventDefault();
+  const submitHandler = (se) => {
+    se.preventDefault();
     if (inputValues.name !== "" && inputValues.price !== "") {
       productsDispatch({
         type: "add",
@@ -57,9 +57,6 @@ const AddNewProduct = ({ children }) => {
       inputRef.current.focus();
       setInputValues(initialState);
     }
-    else {
-      inputRef.current.placeholder ="نام کالا نمی تواند خالی باشد"
-    }
   };
   return (
     <section className="productsContainer">
@@ -70,8 +67,7 @@ const AddNewProduct = ({ children }) => {
             <label style={{ marginLeft: "5px", marginBottom: "5px" }}>
               گروه کالا:
             </label>
-            {btnGroupSelected && <label className="groupLabel">
-            </label>}
+            {btnGroupSelected && <label className="groupLabel"></label>}
             <label style={{ marginLeft: "5px", marginBottom: "5px" }}>
               نام کالا:
             </label>
@@ -102,6 +98,7 @@ const AddNewProduct = ({ children }) => {
               className="formInput"
               value={inputValues.name}
               onChange={changeHandler}
+              placeholder="نام کالا نمی تواند خالی باشد"
             />
             <input
               type="text"
@@ -109,15 +106,14 @@ const AddNewProduct = ({ children }) => {
               className="formInput"
               value={inputValues.price}
               onChange={changeHandler}
+              placeholder="قیمت نمی تواند خالی باشد"
             />
-            
 
             <div className="rowFlexCenter">
               <button className="formButton" type="submit">
                 اضافه کردن کالا
               </button>
             </div>
-            
           </section>
           <section>
             <button
@@ -127,9 +123,7 @@ const AddNewProduct = ({ children }) => {
               {btnGroupSelected ? "بستن" : "گروه جدید"}
             </button>
           </section>
-          
         </form>
-            
       </div>
     </section>
   );
