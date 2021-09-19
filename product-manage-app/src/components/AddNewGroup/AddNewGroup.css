@@ -3,13 +3,13 @@
   background-color: #eee;
   color: var(--color04);
   font-size: 18px;
-  width: 20rem;
+  width: 420px;
   border-radius: 10px;
   border: 1px solid var(--color09);
   display: flex;
   padding: 5px;
   justify-content: center;
-  margin-right: 47px;
+  margin-right: 68px;
   margin-bottom: 5px;
 }
 .groupLabel {

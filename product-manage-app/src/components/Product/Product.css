@@ -7,17 +7,21 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center;
 }
 
 .prdContainer h4 {
+  align-self: center;
   padding: 5px;
 }
 .prdformInput {
   width: 10rem;
-  margin: 10px 5px 10px 5px;
+  margin: 10px 10px 10px 5px;
+  border: 1px solid var(--color10);
+  border-radius: 5px;
+  padding: 0px 5px;
 }
 .formBtn {
+  align-self: center;
   padding: 2px 10px;
   font-weight: bold;
   border: none;
@@ -25,4 +29,5 @@
   border-radius: 5px;
   color: #fff;
   margin-bottom: 10px;
+  margin-right: 20px;
 }

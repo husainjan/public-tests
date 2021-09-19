@@ -15,6 +15,7 @@ const AddNewProduct = ({ children }) => {
   const inputRef = useRef();
   const [inputValues, setInputValues] = useState(initialState);
   const [btnGroupSelected, setBtnGroupSelected] = useState(false);
+  const numberFormat = (value) => new Intl.NumberFormat("fa-IR").format(value);
 
   const clickGroupHandler = () => {
     const status = !btnGroupSelected;
@@ -31,11 +32,6 @@ const AddNewProduct = ({ children }) => {
   //   );
 
   const changeHandler = (event) => {
-    if (event.target.name === "price") {
-      if (isNaN(event.target.value)) {
-        event.target.value = "";
-      }
-    }
     setInputValues({
       ...inputValues,
       [event.target.name]: event.target.value,
@@ -62,6 +58,7 @@ const AddNewProduct = ({ children }) => {
     <section className="newproductsContainer">
       <div>
         <h4>پنجره اضافه کردن کالا</h4>
+        {btnGroupSelected && <section>{children}</section>}
         <form className="productForm" onSubmit={submitHandler}>
           <section className="formInputs">
             <div>
@@ -88,7 +85,7 @@ const AddNewProduct = ({ children }) => {
               >
                 {btnGroupSelected ? "بستن" : "گروه جدید"}
               </button>
-              {btnGroupSelected && <section>{children}</section>}
+
               {/* {btnGroupSelected && <label className="groupLabel"></label>} */}
             </div>
             <div>
@@ -109,16 +106,18 @@ const AddNewProduct = ({ children }) => {
               <label style={{ marginLeft: "5px", marginBottom: "5px" }}>
                 قیمت (ریال):
               </label>
-
               <input
-                type="text"
+                type="number"
                 name="price"
                 className="formInput2"
                 value={inputValues.price}
                 onChange={changeHandler}
-                onFocus={(e) => (e.target.value = "")}
                 placeholder="قیمت نمی تواند خالی باشد"
               />
+              <span>
+                {numberFormat(inputValues.price)}
+                <span> ریال</span>
+              </span>
             </div>
 
             <div className="rowFlexCenter">

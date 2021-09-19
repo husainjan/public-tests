@@ -29,8 +29,6 @@ const reducer = (state, action) => {
       let Items = [...state];
       const index = Items.findIndex((p) => p.id === action.value.id);
       Items[index] = { ...action.value };
-      console.log(Items);
-
       return Items;
     case "delete":
       return state.filter((p) => p.id !== action.value.id);

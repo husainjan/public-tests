@@ -15,14 +15,11 @@ const ProductList = () => {
   const products = useProducts();
   const productsDispatch = useProductsActions();
   const productsGroup = useProductGroup();
-  const numberFormat = (value) =>
-    new Intl.NumberFormat("fa-IR", {
-      maximumSignificantDigits: 3,
-    }).format(value);
+  const numberFormat = (value) => new Intl.NumberFormat("fa-IR").format(value);
   useEffect(() => {
     setBtnSelected(false);
-    // setBtnEditSelected(false);
-  }, []);
+    setBtnEditSelected(false);
+  }, [products]);
 
   const clickHandler = () => {
     const status = !btnSelected;
