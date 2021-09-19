@@ -12,7 +12,7 @@ const Product = ({ product, setProduct }) => {
 
   useEffect(() => {
     editRef.current.focus();
-  }, []);
+  }, [product.id]);
 
   const changeHandler = (event) => {
     if (event.target.name === "groupId") {

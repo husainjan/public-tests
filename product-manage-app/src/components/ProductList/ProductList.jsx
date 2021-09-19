@@ -18,16 +18,17 @@ const ProductList = () => {
   const numberFormat = (value) => new Intl.NumberFormat("fa-IR").format(value);
   useEffect(() => {
     setBtnSelected(false);
-    setBtnEditSelected(false);
-  }, [products]);
+  }, []);
 
   const clickHandler = () => {
     const status = !btnSelected;
     setBtnSelected(status);
+    setBtnEditSelected(false);
   };
   const editHandler = (id) => {
     setProduct(products.find((p) => p.id === id));
     setBtnEditSelected(true);
+    setBtnSelected(false);
   };
 
   const deleteHandler = (id) => {
@@ -41,12 +42,15 @@ const ProductList = () => {
 
   const renderProducts = () => {
     let renderedElements = <p>محصولی موجود نمی باشد</p>;
-    console.log(products.length, products);
     if (products && products.length > 0) {
       renderedElements = (
         <>
           {btnEditSelected && (
-            <Product product={product} setProduct={setProduct} />
+            <Product
+              product={product}
+              setProduct={setProduct}
+              setBtnEditSelected={setBtnEditSelected}
+            />
           )}
           <section className="productsContainer">
             <div className="productContainer productHeaderContainer bolded">

@@ -18,9 +18,16 @@ const productsInitialState = [];
 const ProductContext = createContext();
 const ProductContextDispatcher = createContext();
 
+const saveLocal = (state) => {
+  localStorage.setItem("products", JSON.stringify(state));
+};
+const clearLocal = () => {
+  localStorage.removeItem("products");
+};
+
 const reducer = (state, action) => {
   switch (action.type) {
-    case "add":
+    case "add": {
       let lastId = 0;
       if (state && state.length > 0) {
         lastId = state[state.length - 1].id;
@@ -28,14 +35,21 @@ const reducer = (state, action) => {
       const newProduct = { ...action.value, id: lastId + 1 };
       let newState = [...state];
       newState.push(newProduct);
+      saveLocal(newState);
       return newState;
-    case "edit":
+    }
+    case "edit": {
       let Items = [...state];
       const index = Items.findIndex((p) => p.id === action.value.id);
       Items[index] = { ...action.value };
+      saveLocal(Items);
       return Items;
-    case "delete":
-      return state.filter((p) => p.id !== action.value.id);
+    }
+    case "delete": {
+      const newState = state.filter((p) => p.id !== action.value.id);
+      saveLocal(newState);
+      return newState;
+    }
     default:
       return productsInitialState;
   }
@@ -58,5 +72,10 @@ const ProductsProvider = ({ children }) => {
 
 export default ProductsProvider;
 
-export const useProducts = () => useContext(ProductContext);
+export const useProducts = () => {
+  useContext(ProductContext);
+  if (localStorage.getItem("products")) {
+    return JSON.parse(localStorage.getItem("products"));
+  }
+};
 export const useProductsActions = () => useContext(ProductContextDispatcher);

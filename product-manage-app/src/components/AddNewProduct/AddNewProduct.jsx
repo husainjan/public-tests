@@ -45,7 +45,7 @@ const AddNewProduct = ({ children }) => {
         type: "add",
         value: {
           name: inputValues.name,
-          price: inputValues.price,
+          price: parseInt(inputValues.price),
           groupId: parseInt(inputValues.groupId),
         },
       });
@@ -58,7 +58,18 @@ const AddNewProduct = ({ children }) => {
     <section className="newproductsContainer">
       <div>
         <h4>پنجره اضافه کردن کالا</h4>
-        {btnGroupSelected && <section>{children}</section>}
+        <div className="rowFlexCenter">
+          <button
+            className={btnGroupSelected ? "btn2 selected" : "btn2"}
+            onClick={clickGroupHandler}
+          >
+            {btnGroupSelected ? "بستن" : "گروه جدید"}
+          </button>
+
+          {/* {btnGroupSelected && <label className="groupLabel"></label>} */}
+          {btnGroupSelected && <section>{children}</section>}
+        </div>
+
         <form className="productForm" onSubmit={submitHandler}>
           <section className="formInputs">
             <div>
@@ -79,14 +90,6 @@ const AddNewProduct = ({ children }) => {
                   );
                 })}
               </select>
-              <button
-                className={btnGroupSelected ? "btn selected" : "btn"}
-                onClick={clickGroupHandler}
-              >
-                {btnGroupSelected ? "بستن" : "گروه جدید"}
-              </button>
-
-              {/* {btnGroupSelected && <label className="groupLabel"></label>} */}
             </div>
             <div>
               <label style={{ marginLeft: "5px", marginBottom: "5px" }}>
