@@ -60,31 +60,30 @@ const ProductList = () => {
               <p className="productsHeaderPadding">قیمت(ریال)</p>
               <p className="productsHeaderPadding">تغییرات</p>
             </div>
-            {products &&
-              products.map((product, index) => {
-                return (
-                  <div key={product.id} className="productContainer">
-                    <p className="productsPadding centered">{index + 1}</p>
-                    <p className="productsPadding">{product.name}</p>
-                    <p className="productsPadding">
-                      {Object.values(
-                        productsGroup.find((pg) => pg.id === product.groupId)
-                      ).pop()}
-                    </p>
-                    <p className="productsPadding rtol">
-                      {numberFormat(product.price)}
-                    </p>
-                    <div className="productsPadding icons">
-                      <div onClick={() => editHandler(product.id)}>
-                        <FaRegEdit className="edit" />
-                      </div>
-                      <div onClick={() => deleteHandler(product.id)}>
-                        <FaTrashAlt className="delete" />
-                      </div>
+            {products.map((product, index) => {
+              return (
+                <div key={product.id} className="productContainer">
+                  <p className="productsPadding centered">{index + 1}</p>
+                  <p className="productsPadding">{product.name}</p>
+                  <p className="productsPadding">
+                    {Object.values(
+                      productsGroup.find((pg) => pg.id === product.groupId)
+                    ).pop()}
+                  </p>
+                  <p className="productsPadding rtol">
+                    {numberFormat(product.price)}
+                  </p>
+                  <div className="productsPadding icons">
+                    <div onClick={() => editHandler(product.id)}>
+                      <FaRegEdit className="edit" />
+                    </div>
+                    <div onClick={() => deleteHandler(product.id)}>
+                      <FaTrashAlt className="delete" />
                     </div>
                   </div>
-                );
-              })}
+                </div>
+              );
+            })}
           </section>
         </>
       );

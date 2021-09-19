@@ -40,7 +40,7 @@ const AddNewProduct = ({ children }) => {
 
   const submitHandler = (se) => {
     se.preventDefault();
-    if (inputValues.name !== "" && inputValues.price !== "") {
+    if (inputValues.name !== "" && inputValues.price !== 0) {
       productsDispatch({
         type: "add",
         value: {
