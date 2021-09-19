@@ -4,7 +4,7 @@ import { useProductsActions } from "../Providers/ProductsProvider";
 
 import "./Product.css";
 
-const Product = ({ product, setProduct }) => {
+const Product = ({ product, setProduct, setBtnEditSelected }) => {
   const productsGroup = useProductGroup();
   const productsDispatch = useProductsActions();
   const numberFormat = (value) => new Intl.NumberFormat("fa-IR").format(value);
@@ -14,6 +14,9 @@ const Product = ({ product, setProduct }) => {
     editRef.current.focus();
   }, [product.id]);
 
+  const cancelHandler = () => {
+    setBtnEditSelected(false);
+  };
   const changeHandler = (event) => {
     if (event.target.name === "groupId") {
       setProduct({
@@ -40,6 +43,7 @@ const Product = ({ product, setProduct }) => {
           groupId: parseInt(product.groupId),
         },
       });
+      setBtnEditSelected(false);
     }
   };
 
@@ -88,6 +92,9 @@ const Product = ({ product, setProduct }) => {
           <div>
             <button className="formBtn" type="submit">
               ویرایش
+            </button>
+            <button className="formBtnCancel" onClick={cancelHandler}>
+              لغو
             </button>
           </div>
         </form>

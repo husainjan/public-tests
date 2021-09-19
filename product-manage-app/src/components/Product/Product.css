@@ -35,4 +35,18 @@
   color: #fff;
   margin-bottom: 10px;
   margin-right: 20px;
+  cursor: pointer;
+}
+
+.formBtnCancel {
+  align-self: center;
+  padding: 2px 10px;
+  font-weight: bold;
+  border: none;
+  background-color: var(--color10);
+  border-radius: 5px;
+  color: #fff;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  cursor: pointer;
 }
