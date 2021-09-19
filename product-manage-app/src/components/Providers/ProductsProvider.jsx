@@ -21,9 +21,6 @@ const ProductContextDispatcher = createContext();
 const saveLocal = (state) => {
   localStorage.setItem("products", JSON.stringify(state));
 };
-const clearLocal = () => {
-  localStorage.removeItem("products");
-};
 
 const reducer = (state, action) => {
   switch (action.type) {
