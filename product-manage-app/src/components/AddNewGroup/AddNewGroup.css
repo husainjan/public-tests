@@ -2,36 +2,37 @@
   /* margin-right: 110px;     */
   background-color: #eee;
   color: var(--color04);
-  font-size: 18px;
-  width: 420px;
+  font-size: 12px;
+  width: 220px;
   border-radius: 10px;
   border: 1px solid var(--color09);
   display: flex;
-  padding: 5px;
+  /* padding: 5px; */
   justify-content: center;
-  margin-right: 20px;
+  margin-right: 5px;
   margin-bottom: 10px;
 }
 .groupLabel {
-  height: 60px;
+  height: 30px;
 }
 
 .GroupsContainer h5 {
-  padding-right: 20px;
+  padding-right: 5px;
   padding-top: 5px;
 }
 
 .groupformInput {
-  margin-left: 5px;
+  margin-left: 1px;
   margin-bottom: 5px;
   outline: none;
   border: 1px solid var(--color10);
   border-radius: 5px;
-  width: 10rem;
+  width: 7rem;
   padding: 2px 5px;
 }
 .formGroupButton {
-  padding: 2px 10px;
+  padding: 2px 2px;
+  margin-right: 5px;
   font-weight: bold;
   outline: none;
   background-color: var(--color12);
